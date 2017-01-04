@@ -1,0 +1,53 @@
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body> 
+</body>
+
+<template name="ApplicationLayout">
+	{{> yield "header"}}
+	{{> yield "main"}}	
+</template>
+
+<template name="navbar">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <ul class="nav navbar-nav">
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actions <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	          	<li><a href="/">Home</a></li>	            
+	            
+	            <li role="separator" class="divider"></li>
+	            <li><a href="/active_tables">Active tables</a></li>
+	            <li><a href="/current_table">Current table</a></li>
+	            <li><a href="/table_hands">Table hands</a></li>
+	            <li><a href="/hands_list">Hands list</a></li>
+	          </ul>
+	        </li>
+	        
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	      <li>{{> loginButtons align="right"}}</li>
+	      </ul>
+	  </div>
+	</nav>
+</template>
+
+
+<template name="landing_page">
+	<div class="container">
+	  <div class="jumbotron">
+	    <h1>PA Season</h1> 
+	    <p>Play with your friends</p>
+	    <p> <a href="/play">...Play!</a> </p>
+	  </div>
+	</div>	
+</template>
+
+
+
+
+
