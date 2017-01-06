@@ -59,3 +59,25 @@ Router.route('/edit_table/:_id', function () {
   }
 });
 
+Router.route('/current_table/:_id', function () {
+  console.log("current table: " + this.params._id);
+
+  Session.set("tableId", this.params._id); 
+
+  var tableId = Session.get("tableId"); 
+  var table = Tables.findOne({_id:tableId});
+  Session.set("current_table", table); 
+  //table.state = "running"; 
+  //Meteor.call("updateTable", table);
+
+  this.render("navbar", {to:"header"});
+  this.render("current_table", {to:"main"});
+});
+
+
+Router.route('/current_table', function () {
+  console.log("current table: " + this.params._id);
+  this.render("navbar", {to:"header"});
+  this.render("current_table", {to:"main"});
+});
+

@@ -1,0 +1,33 @@
+<template name="current_table">	
+	<div class="container">
+	 	<div class="jumbotron">
+		    <h1>TABLE {{activeTable}}</h1> 		    
+		</div>
+		<a href="/table_hands" class="btn btn-primary">table hands</a>
+		<div class="row table-participant-div">
+		  	<!-- {{#each user}}
+			  	<div class="col-xs-6">		  		
+					{{> available_user}}			
+			  	</div>
+		  	{{/each}} -->
+		  	{{#each players}}
+			  	<div class="col-xs-6">		  		
+					<a href="/hands_list/{{_id}}">
+						<div class="user_avatar">			
+							<div>
+								<img src="/{{profile.avatar}}" class="avatar_img">	
+								<div class="user-name">{{profile.username}}</div>		
+								<div class="user-points">{{points}}</div>
+							</div>			
+						</div>
+					</a>		
+			  	</div>
+		  	{{/each}}
+
+		</div>
+		<button type="button" class="btn btn-default js-close-table">close table</button>	 
+		<!-- <a href="/telesina_list" type="button" class="btn btn-warning" style="position:fixed; bottom: 30px; right: 20px; width: 50px; height: 50px; border-radius: 50px;">
+			<div style="font-size: 2em; color: white; font-weight: bold;">+</div>
+		</a>  -->
+	</div>	
+</template>
