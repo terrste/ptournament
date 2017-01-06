@@ -1,0 +1,43 @@
+<template name="edit_table">	
+	<div class="container">
+	 	<div class="jumbotron table_{{table.state}}">
+		    <h3>TABLE {{tableId}}</h3> 		
+		    <h3>{{table.state}}</h3>    
+		</div>
+
+	  	{{#if isRunning}}
+	        <a href="/active_tables" type="button" class="btn btn-default">active tables</a>
+			<a href="/current_table" type="button" class="btn btn-default">Play</a>
+			<br>
+			<div class="row table-participant-div">
+			  	
+			  	{{#each users}}
+				  	<div class="col-xs-6 {{getClass _id}}">						
+						<div class="user_avatar">
+							<img src="/{{profile.avatar}}" class="avatar_img">	
+							<div class="user-name">{{profile.username}}</div>		
+							<div class="user-points">{{points}}</div>							
+						</div>
+				  	</div>
+			  	{{/each}}
+			</div>		  
+	    {{else}}			 			        
+	        <a href="/active_tables" type="button" class="btn btn-default">active tables</a>
+			<a href="" type="button" class="btn btn-default js-remove-table">Remove table</a>
+			<a href="" type="button" class="btn btn-default js-start-table">Start</a>
+			<br>
+			<div class="row table-participant-div">
+			  	
+			  	{{#each users}}
+				  	<div class="col-xs-6  js-toggle-select-user {{getClass _id}}">						
+						<div class="user_avatar">
+							<img src="/{{profile.avatar}}" class="avatar_img">	
+							<div class="user-name">{{profile.username}}</div>		
+							<div class="user-points">{{points}}</div>							
+						</div>
+				  	</div>
+			  	{{/each}}
+			</div>		  
+	    {{/if}}				
+	</div>	
+</template>

@@ -1,0 +1,109 @@
+/* CSS declarations go here */
+body {
+  font-family: sans-serif;
+  background-color: green;
+  background-image: linear-gradient(to bottom, green, #918e82 100%);
+  background-attachment: fixed;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 0;
+  margin: 0;
+
+  font-size: 14px;
+}
+
+header {
+  background: #d2edf4;
+  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+  padding: 20px 15px 15px 15px;
+  position: relative;
+}
+
+#login-buttons {
+  display: block;
+}
+
+.table-participant-div{
+  /*background-color: yellow;*/
+}
+
+.user_avatar{
+  min-height:100px;
+  text-align: center;
+  /*background-color: rgba(0, 0, 0, 0.5);*/  
+}
+
+.user_avatar :hover{
+  /*background-color: yellow;*/
+}
+
+.avatar_img{
+  height:140px;
+   width:140px;
+}
+
+.hands_avatar_img{
+  height:50px;
+  width:50px;
+}
+
+
+.user-name {
+  color:white;
+  font-weight: bold; 
+  background-color: black; 
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.js-toggle-select-user{
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+.table-user-selected{
+  
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+}
+
+
+.table-user-unselected{
+   /*border: rgba(0, 0, 0, 0.0) 5px solid ;*/
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+   
+}
+
+.table-user-unselected : hover{
+   opacity: 1.0;
+   filter: alpha(opacity=100);
+   
+}
+
+.table_created{
+  background-color: grey; 
+}
+
+.table_closed{
+  background-color: brown; 
+}
+
+.table_running{
+  background-color: yellow; 
+}
+
+.active_table>a{
+  width: 100%;
+}
+
+
+
