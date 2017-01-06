@@ -9,6 +9,12 @@ Router.route('/', function () {
 });
 
 
+Router.route('/active_tables', function () {
+  console.log("active tables");
+  this.render("navbar", {to:"header"});
+  this.render("active_tables", {to:"main"});
+});
+
 Router.route('/edit_table/:_id', function () {
   
 	if (!Meteor.userId()){// not logged in
@@ -51,7 +57,5 @@ Router.route('/edit_table/:_id', function () {
 	  this.render("navbar", {to:"header"});
 	  this.render("edit_table", {to:"main"});
   }
-
-  
 });
 
