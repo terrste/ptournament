@@ -1,0 +1,64 @@
+<template name="hands_list">	
+	<div class="alert alert-warning alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <strong>This warning with instruction is for revision purpose only</strong><br>
+	  The winner that you are recording is: {{userWinner.profile.username}}. Please, choose the winning point from those available.
+	</div>
+
+	<h1>{{userWinner.profile.username}}</h1>
+	{{#each hands}}
+	  	<div class="col-xs-6">
+	  		<!-- {{#if isPointHi id}}
+		        <a href="/point_height/{{id}}">
+			        <div class="user_avatar">			
+						<div class="">
+							<img src="/img/{{img}}" class="avatar_img">
+							<div>{{name}}</div>			
+						</div>					
+					</div>
+				</a>
+		    {{else}}			 			        
+		         <a href="/suits_list/{{id}}">
+			        <div class="user_avatar">			
+						<div class="">
+							<img src="/img/{{img}}" class="avatar_img">
+							<div>{{name}}</div>			
+						</div>					
+					</div>
+				</a>
+		    {{/if}}		 -->  		
+
+		    {{#if isPointHi id}}
+		        <a href="/point_height/{{id}}">
+			        <div class="hand_button">			
+						<div class="">
+							<img src="/img/{{img}}" class="hand_img">
+							<div>{{name}}</div>			
+						</div>					
+					</div>
+				</a>
+		    {{else}}			 			        
+		        {{#if isPointNv id}}
+			        <a href="" class="js-set-point" data-id="{{id}}">
+				        <div class="hand_button">			
+							<div class="">
+								<img src="/img/{{img}}" class="hand_img">
+								<div>{{name}}</div>			
+							</div>					
+						</div>
+					</a>
+			    {{else}}			 			        
+			         <a href="/suits_list/{{id}}">
+				        <div class="hand_button">			
+							<div class="">
+								<img src="/img/{{img}}" class="hand_img">
+								<div>{{name}}</div>			
+							</div>					
+						</div>
+					</a>
+			    {{/if}}		
+		    {{/if}}		
+
+	  	</div>
+	{{/each}}
+</template>

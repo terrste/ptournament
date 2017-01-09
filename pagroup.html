@@ -39,11 +39,24 @@
 
 <template name="landing_page">
 	<div class="container">
+		<div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <strong>This warning with instructions is for revision purpose only</strong><br><br>
+		  Log in with <br>
+		  USER: user1@test.com<br>
+		  PWD: test123<br><br>
+		  Then you can:  <br>
+		  - create a table adding at least 2 players choosing among the 8 available<br>
+		  - insert a point and see the updated scores of the current table <br><br>
+
+		  If, using another browser (I suggest to use a smartphone), you log in with user2@test.com,test123 and you created a table with user1 and user2 as players, you can see from both browsers, the same scores updated in real time. <br><br>
+
+		  <strong>to start click on link "play" below</strong>
+		</div>
 	  <div class="jumbotron">
 	    <h1>PTournament</h1> 
 	    <p>Play with your friends</p>
-	    <p>Log in with USER: user1@test.com PWD: test123</p>
-	    <p>Then you can create a table adding at least 2 players choosing from the 8 available</p>
+	    
 	    <p> <a href="/play">...Play!</a> </p>
 	  </div>
 	</div>	

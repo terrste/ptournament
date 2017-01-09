@@ -81,3 +81,23 @@ Router.route('/current_table', function () {
   this.render("current_table", {to:"main"});
 });
 
+
+
+Router.route('/hands_list/:_id', function () {
+    // the user they want to chat to has id equal to 
+    // the id sent in after /chat/... 
+    var winnerUserId = this.params._id;
+    var winner = Meteor.users.findOne({_id:winnerUserId});
+    Session.set("userWinner",  winner);   
+    console.log("hands list " + winnerUserId);
+    this.render("navbar", {to:"header"});
+    this.render("hands_list", {to:"main"});
+  });
+
+Router.route('/table_hands', function () {
+  console.log("table hands");
+  this.render("navbar", {to:"header"});
+  this.render("not_implemented", {to:"main"});
+  //this.render("table_hands", {to:"main"});
+});
+
