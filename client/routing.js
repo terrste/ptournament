@@ -101,3 +101,39 @@ Router.route('/table_hands', function () {
   //this.render("table_hands", {to:"main"});
 });
 
+Router.route('/point_height/:_id', function () {
+    // the user they want to chat to has id equal to 
+    // the id sent in after /chat/... 
+    var handId = this.params._id;
+    
+    var  hand; 
+    for (var i=0; i<hands.length; i++){
+      if(hands[i].id==handId){
+        hand = hands[i]; 
+
+      }
+    }
+
+    Session.set("hand", hand)
+    console.log("point height " + hand);
+    this.render("navbar", {to:"header"});
+    this.render("point_heights", {to:"main"});
+  });
+
+
+Router.route('/suits_list/:_id', function () {
+    // the user they want to chat to has id equal to 
+    // the id sent in after /chat/... 
+    var handId = this.params._id;
+    
+    var  hand; 
+    for (var i=0; i<hands.length; i++){
+      if(hands[i].id==handId){
+        hand = hands[i]; 
+      }
+    }
+    Session.set("hand", hand)
+    
+    this.render("navbar", {to:"header"});
+    this.render("suits_list", {to:"main"});
+  });

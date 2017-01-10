@@ -1,8 +1,9 @@
 <template name="hands_list">	
+<div class="container">	 	
 	<div class="alert alert-warning alert-dismissible" role="alert">
 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	  <strong>This warning with instruction is for revision purpose only</strong><br>
-	  The winner that you are recording is: {{userWinner.profile.username}}. Please, choose the winning point from those available.
+	  <strong>This warning with instructions is for revision purpose only</strong><br>
+	  The winner that you are recording is: {{userWinner.profile.username}}. Please, choose the hand's type among those available.
 	</div>
 
 	<h1>{{userWinner.profile.username}}</h1>
@@ -61,4 +62,5 @@
 
 	  	</div>
 	{{/each}}
+	</div>
 </template>
