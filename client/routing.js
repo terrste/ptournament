@@ -9,10 +9,74 @@ Router.route('/', function () {
 });
 
 
+Router.route('/play', function () {
+  console.log("play");
+  
+  if (!Meteor.userId()){// not logged in
+      alert("please log in!"); 
+      this.render("navbar", {to:"header"});
+      this.render("landing_page", {to:"main"});
+  } else {
+      //if user logged and user is in active table go to table
+      //if user logged and user is not in table go to create new table
+      var tables  = Tables.find({active:true}).fetch();
+
+      if (tables != null && tables.length > 0){
+          console.log("tables: " + tables.length); 
+          Session.set("active_tables", tables); 
+          for (var i = 0; i<tables.length; i++){
+              for (var j=0; j<tables[i].players.length; j++){
+                console.log("tables: i " + i + " J: " + j); 
+                if (tables[i].players[j] == Meteor.userId()){ //user is in running table
+                    if (tables[i].state == 'running'){
+                        Session.set("tableId", tables[i]._id); 
+                        Session.set("current_table", tables[i]); 
+                        this.render("navbar", {to:"header"});
+                        this.render("current_table", {to:"main"});
+                        return; 
+                    } else if (tables[i].state == 'created'){
+                        Session.set("current_table", tables[i]); 
+                        this.render("navbar", {to:"header"});
+                        this.render("edit_table", {to:"main"});
+                        return; 
+                    }
+                 }  
+              }              
+          }
+
+          this.render("navbar", {to:"header"});
+          this.render("active_tables", {to:"main"});
+           return; 
+      }
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Router.route('/active_tables', function () {
-  console.log("active tables");
-  this.render("navbar", {to:"header"});
-  this.render("active_tables", {to:"main"});
+	if (!Meteor.userId()){// not logged in
+      alert("please log in!"); 
+      this.render("navbar", {to:"header"});
+      this.render("landing_page", {to:"main"});
+  } else {
+  	  console.log("active tables");
+	  this.render("navbar", {to:"header"});
+	  this.render("active_tables", {to:"main"});
+  }
+  
 });
 
 Router.route('/edit_table/:_id', function () {
