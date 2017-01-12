@@ -1,8 +1,18 @@
 <template name="edit_table">	
 	<div class="container">
+
+		<div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <strong>This warning with instructions is for revision purpose only</strong><br><br>
+		  Here you can see the state of the table and players in the table.<br><br>
+		  - grey: the table is in state created, you can add or remove players and then you can start playing<br>
+		  - yellow: the table is in state running, you can't add or remove player, you can only click play and go in "current table" view, where you can insert point or close the table.<br>
+		  - red: the table in state closed, you can re-start the table or remove it from the list		  
+		</div>
+
 	 	<div class="jumbotron table_{{table.state}}">
 		    <h3>TABLE {{tableId}}</h3> 		
-		    <h3>{{table.state}}</h3>    
+		    <h3>state: {{table.state}}</h3>    
 		</div>
 
 	  	{{#if isRunning}}

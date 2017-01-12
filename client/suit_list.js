@@ -6,6 +6,7 @@ Template.suits_list.helpers({
   },
 
   suits:function(){ 
+    console.log(JSON.stringify(suits)); 
     return suits;
   },
 

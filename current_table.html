@@ -1,12 +1,13 @@
 <template name="current_table">	
 	<div class="container">	 	
-		<h1>TABLE {{activeTable}}</h1> 
+		
 		<div class="alert alert-warning alert-dismissible" role="alert">
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  <strong>This warning with instructions is for revision purpose only</strong><br>
 		  Imagine that you are playing a hand of poker. A player wins the hand and you have to insert all the information about winning point. First of all you have to choose the winning player.
 		  Please choose a player among those available.
 		</div>
+		<h1>TABLE {{activeTable}}</h1> 
 		<a href="/table_hands" class="btn btn-primary">table hands</a>
 		<div class="row table-participant-div">
 		  	<!-- {{#each user}}

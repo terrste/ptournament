@@ -23,7 +23,7 @@ Template.current_table.helpers({
       var plates = Plates.find({table: tableId}).fetch();
       //console.log(plates); 
       
-players = getPlayersWithPoints(users, plates);
+      players = getPlayersWithPoints(users, plates);
 
 
       /*for (var i = 0; i<users.length; i++){

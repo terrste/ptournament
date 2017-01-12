@@ -201,3 +201,23 @@ Router.route('/suits_list/:_id', function () {
     this.render("navbar", {to:"header"});
     this.render("suits_list", {to:"main"});
   });
+
+
+
+  Router.route('/point_color_height/:_id', function () {
+    // the user they want to chat to has id equal to 
+    // the id sent in after /chat/... 
+    var colorId = this.params._id;
+    
+    var  suit; 
+    for (var i=0; i<suits.length; i++){
+      if(suits[i].id==colorId){
+        suit = suits[i]; 
+      }
+    }
+
+    Session.set("suit", suit)
+    console.log("suit" + suit);
+    this.render("navbar", {to:"header"});
+    this.render("point_heights", {to:"main"});
+  });

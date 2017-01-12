@@ -130,9 +130,16 @@ header .hide-completed {
    background-color: yellow;
 }*/
 
+/*.user_avatar>div{
+  
+}*/
+
 .user_avatar{
   min-height:100px;
   text-align: center;
+  background-color: white;
+  margin-bottom: 5px;
+  margin-top: 5px;
   /*background-color: rgba(0, 0, 0, 0.5);*/  
 }
 
