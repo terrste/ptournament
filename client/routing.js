@@ -140,9 +140,31 @@ Router.route('/current_table/:_id', function () {
 
 
 Router.route('/current_table', function () {
-  console.log("current table: " + this.params._id);
-  this.render("navbar", {to:"header"});
-  this.render("current_table", {to:"main"});
+
+  if (!Meteor.userId()){// not logged in
+      alert("please log in!"); 
+      this.render("navbar", {to:"header"});
+      this.render("landing_page", {to:"main"});
+  } else {
+    if (!Session.get("tableId")){
+      console.log("current table: " + this.params._id);
+      this.render("navbar", {to:"header"});
+      this.render("active_tables", {to:"main"});
+    } else {
+
+      this.render("navbar", {to:"header"});
+      this.render("current_table", {to:"main"});
+    }
+
+    
+  }
+
+
+
+
+
+
+  
 });
 
 

@@ -144,7 +144,7 @@ header .hide-completed {
 }
 
 .user_avatar :hover{
-  /*background-color: yellow;*/
+  background-color: grey;
 }
 
 .avatar_img{
