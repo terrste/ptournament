@@ -1,0 +1,24 @@
+<template name="telesina_list">
+	
+		<h1>{{table.name}}</h1>
+
+		{{#each telesine}}
+		  	<div class="col-xs-6">
+		  		<a href="/telesina_winners/{{id}}">
+		  		<div class="hand_button">			
+					<div class="">
+						<img src="/img/{{img}}" class="hand_img">	
+						<div>{{name}} {{code}}  {{plates}}</div>					
+					</div>					
+				</div>
+			  		<!-- <div>			
+						<div class="">
+							<div>{{code}}</div>		
+							<div>{{name}}</div>		
+							<div>{{plates}}</div>			
+						</div>					
+					</div> -->
+				</a>
+		  	</div>
+		  	{{/each}}
+</template>

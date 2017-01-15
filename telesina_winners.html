@@ -1,0 +1,48 @@
+<template name="telesina_winners">	
+	<div class="container">
+	 	<div class="jumbotron">
+		    <h1>TABLE {{activeTable}}</h1> 		  
+		    <h3>{{telesina.name}}({{telesina.plates}})</h3>  
+		</div>
+		<a href="/current_table" class="btn btn-primary">current table</a>
+		<div class="row table-participant-div">
+		  	<!-- {{#each user}}
+			  	<div class="col-xs-6">		  		
+					{{> available_user}}			
+			  	</div>
+		  	{{/each}} -->
+		  	{{#each players}}
+			  	<div class="col-xs-6 js-toggle-add-winner {{getClass _id}}"  data-id="{{_id}}">						
+						<div class="user_avatar">
+							<img src="/{{profile.avatar}}" class="avatar_img">	
+							<div class="user-name">{{profile.username}}</div>		
+							<!-- <div class="user-points">{{points}}</div> -->							
+						</div>
+				  	</div>
+		  	{{/each}}
+
+		</div>	
+
+
+		{{#each winners}}
+
+	  	<div class="row">
+	  		<div class="col-xs-2">
+	  			<div type="button" class="btn btn-danger js-remove-winner" data-id="{{user._id}}">remove</div>
+	  		</div>
+	  		<div class="col-xs-1">{{rowIndex}}</div>
+	  		<div class="col-xs-2"><img src="/{{user.profile.avatar}}" class="hands_avatar_img" title="{{user.profile.username}}"></div>		
+	  		<div class="col-xs-6">{{hand.name}} </div>	
+	  			  		
+	  	</div>
+	  	{{/each}}
+
+
+		<a href="" type="button" class="btn btn-warning js-confirm-plate" style="position:fixed; bottom: 30px; right: 20px; width: 50px; height: 50px; border-radius: 50px;">
+			<div style="font-size: 2em; color: white; font-weight: bold;"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+		</a> 
+	  	
+		
+
+	</div>	
+</template>

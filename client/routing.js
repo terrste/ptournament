@@ -243,3 +243,46 @@ Router.route('/suits_list/:_id', function () {
     this.render("navbar", {to:"header"});
     this.render("point_heights", {to:"main"});
   });
+
+Router.route('/telesina_list', function () {
+  console.log("telesina list");
+  this.render("navbar", {to:"header"});
+  this.render("telesina_list", {to:"main"});
+});
+
+Router.route('/telesina_winners/:_id', function () {
+  console.log("telesina winners");
+
+  var tableId = Session.get("tableId");
+  var telesinaId = this.params._id;
+
+
+  /*var winner =  {
+        user: Session.get("userWinner"),
+        hand: Session.get("hand"),
+        point_suit: Session.get("suit")
+      }*/
+
+  var plate = {
+        table: tableId, 
+        type:2,
+        type_code: telesinaId,
+        winners:[]
+  }  
+
+  Session.set("telesina_plate", plate); 
+
+
+  var telesina; 
+  for (var i=0; i<telesine.length; i++){
+    if (telesine[i].id == plate.type_code){
+      telesina = telesine[i]; 
+    }
+  }
+
+  Session.set("current_telesina", telesina); 
+
+
+  this.render("navbar", {to:"header"});
+  this.render("telesina_winners", {to:"main"});
+});
