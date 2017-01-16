@@ -1,5 +1,10 @@
 <template name="telesina_list">
-	
+	<div class="container">
+		<div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <strong>This warning with instructions is for revision purpose only</strong><br>
+		  Here you have to choose which type of stud poker has been played.
+		</div>
 		<h1>{{table.name}}</h1>
 
 		{{#each telesine}}
@@ -21,4 +26,5 @@
 				</a>
 		  	</div>
 		  	{{/each}}
+	</div>
 </template>

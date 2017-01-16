@@ -183,8 +183,7 @@ Router.route('/hands_list/:_id', function () {
 Router.route('/table_hands', function () {
   console.log("table hands");
   this.render("navbar", {to:"header"});
-  this.render("not_implemented", {to:"main"});
-  //this.render("table_hands", {to:"main"});
+  this.render("table_hands", {to:"main"});
 });
 
 Router.route('/point_height/:_id', function () {
