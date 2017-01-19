@@ -1,6 +1,6 @@
 <template name="hands_list">	
 <div class="container">	 	
-	<div class="alert alert-warning alert-dismissible" role="alert">
+	<div class="alert alert-info alert-dismissible" role="alert">
 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	  <strong>This warning with instructions is for revision purpose only</strong><br><br>
 	  The winner that you are recording is: {{userWinner.profile.username}}. Please, choose the hand's type among those available.<br><br>
@@ -8,6 +8,7 @@
 	  Finally, if you choose a straight flush, you will be asked to choose the suit and the height of the point.
 	</div>
 
+	<a href="/current_table" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;current table</a>
 	<h1>Winner: {{userWinner.profile.username}}</h1>
 	{{#each hands}}
 	  	<div class="col-xs-6">

@@ -27,6 +27,12 @@ Template.edit_table.helpers({
     }
   },
 
+  getDate: function(tableDate){
+    var time = tableDate.toLocaleTimeString().toLowerCase();
+    var day = $.datepicker.formatDate("dd/mm/yy", tableDate); 
+    return  day + " " + time;
+  },
+
   getClass: function(userId){
       var tableId = Session.get("tableId"); 
       var table = Tables.findOne({_id:tableId}); 
@@ -58,10 +64,19 @@ Template.edit_table.events({
 
   "click .js-remove-table": function () {
 
-    var tableId = Session.get("tableId"); 
-    var table = Tables.findOne({_id:tableId}); 
-    table.active = false; 
-    Meteor.call("updateTable", table);
+
+    var r = confirm("Are you sure to remove the table?");
+    if (r == true) {
+       var tableId = Session.get("tableId"); 
+      var table = Tables.findOne({_id:tableId}); 
+      table.active = false; 
+      Meteor.call("updateTable", table);
+    } else {
+        return;
+    }
+
+
+   
     
   },
 

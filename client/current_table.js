@@ -60,15 +60,23 @@ Template.current_table.events({
 
   "click .js-close-table": function () {
 
-    /*console.log(this); 
-    alert("close table"); */
-    //console.log("current_table IN"); 
-    var tableId = Session.get("tableId"); 
-    var table = Tables.findOne({_id:tableId});
-    table.state = "closed"; 
-    Meteor.call("updateTable", table);
-    Session.set("current_table", table); 
-    //console.log("current_table OUT"); 
-    Router.go('/active_tables');
+    var r = confirm("Are you sure to close the table?");
+    if (r == true) {
+        /*console.log(this); 
+      alert("close table"); */
+      //console.log("current_table IN"); 
+      var tableId = Session.get("tableId"); 
+      var table = Tables.findOne({_id:tableId});
+      table.state = "closed"; 
+      Meteor.call("updateTable", table);
+      Session.set("current_table", table); 
+      //console.log("current_table OUT"); 
+      Router.go('/active_tables');
+    } else {
+        return;
+    }
+
+
+    
   }
 });

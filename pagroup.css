@@ -1,8 +1,8 @@
 /* CSS declarations go here */
 body {
   font-family: sans-serif;
-  background-color: green;
-  background-image: linear-gradient(to bottom, green, #918e82 100%);
+  /*background-color: green;
+  background-image: linear-gradient(to bottom, green, #918e82 100%);*/
   background-attachment: fixed;
 
   position: absolute;
@@ -17,6 +17,19 @@ body {
   font-size: 14px;
 }
 
+
+.container-table {
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.playbutton{
+  margin-top: 30px;
+  font-size: 2em;
+}
 /*.container {
   max-width: 600px;
   margin: 0 auto;
@@ -122,6 +135,10 @@ header .hide-completed {
   }
 }*/
 
+.active_table > a{
+  margin-top: 10px;
+}
+
 .table-participant-div{
   /*background-color: yellow;*/
 }
@@ -137,16 +154,21 @@ header .hide-completed {
 .user_avatar{
   min-height:100px;
   text-align: center;
-  background-color: white;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  /*background-color: white;*/
+  background-color: #5cb85c;
+  border: solid 1px #4cae4c;
+  padding-top: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   /*background-color: rgba(0, 0, 0, 0.5);*/  
 }
 
-.user_avatar :hover{
+/*.user_avatar :hover{
   background-color: grey;
+  border: solid 5px grey;
 }
-
+*/
 .avatar_img{
   height:140px;
    width:140px;
@@ -160,16 +182,17 @@ header .hide-completed {
 .user-points{
   font-weight: bold; 
   font-size: 2em;
-  color:red;
+  color:white;
   position: absolute;
-  top: 5px;
+  top: 15px;
   right: 35px; 
 }
 
 .user-name {
   color:white;
   font-weight: bold; 
-  background-color: black; 
+  font-size: 2em;
+  /*background-color: black; */
 }
 
 a:link {
@@ -211,15 +234,15 @@ box-shadow: 0px 0px 32px 2px rgba(168,240,60,1);
 }
 
 .table_created{
-  background-color: grey; 
+  background-color: lightgrey; 
 }
 
 .table_closed{
-  background-color: brown; 
+  background-color: red; 
 }
 
 .table_running{
-  background-color: yellow; 
+  background-color: #5cb85c; 
 }
 
 .active_table>a{
@@ -230,18 +253,22 @@ box-shadow: 0px 0px 32px 2px rgba(168,240,60,1);
 /*hands_list*/
 
 .hand_button{
-  border: 1px solid gray;
- 
+
+  background-color: #5cb85c;
+  border: solid 1px #4cae4c;
+
+  border-radius: 10px;
+  cursor: pointer;
   margin: 5px;
   min-height:100px;
   padding-top: 15px;
   text-align: center;
-  background-color: rgba(255, 255, 255, 1); 
-}
+  /*background-color: rgba(255, 255, 255, 1); */
+ }
 
-.hand_button :hover{
+/*.hand_button :hover{
   background-color: gray;
-}
+}*/
 
 .hand_button > div {
  
@@ -249,7 +276,7 @@ box-shadow: 0px 0px 32px 2px rgba(168,240,60,1);
 }
 
 .hand_button > div > div{
-  background-color: black;
+  /*background-color: black;*/
   margin: auto;
   height: 40px;
   font-size: 1.5em; 
@@ -264,17 +291,18 @@ box-shadow: 0px 0px 32px 2px rgba(168,240,60,1);
 }
 
 .point_height_button{
-  border: 1px solid gray;
- 
+  background-color: #5cb85c;
+  border: solid 1px #4cae4c;
+  border-radius: 10px;
   margin: 5px;
   min-height:122px;
   padding-top: 9px;
   text-align: center;
-  background-color: rgba(255, 255, 255, 1); 
+ /* background-color: rgba(255, 255, 255, 1); */
 }
 
 .point_height_button :hover
-  background-color: gray;
+  background-color: grey;
 }
 
 .point_height_button > div {
@@ -283,7 +311,7 @@ box-shadow: 0px 0px 32px 2px rgba(168,240,60,1);
 }
 
 .point_height_button > div > div{
-  background-color: black;
+  /*background-color: black;*/
   margin: auto;
   height: 40px;
   font-size: 1.5em; 
@@ -297,4 +325,24 @@ box-shadow: 0px 0px 32px 2px rgba(168,240,60,1);
    width:48px;
    margin: 5px;
 }
+
+  .table-hands{
+
+  margin-top: 20px; 
+  border-bottom: solid 1px lightgrey; 
+  padding: 5px;
+}
+.table-hands ~ .table-hands{
+
+  margin-top: 5px; 
+  border-bottom: solid 1px lightgrey; 
+  padding: 5px;
+}
+
+.glyph-color{
+  color: gold;
+  font-size:2em;
+}
+
+
 
