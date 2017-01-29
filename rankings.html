@@ -1,0 +1,15 @@
+<template name="rankings">
+	<div class="container">
+				
+		    <h1>Classifiche</h1>   
+		    <div>Numero giocatori:{{rankings.n_players}}</div>
+			<div>Numero mani:{{rankings.n_hands}}</div>
+
+			{{#each rankings.players}}
+			  	<div>		  		
+					Player: {{profile.username}} &nbsp; {{userHands}}  &nbsp; {{userPoints}} &nbsp; {{userMean}}
+			  	</div>
+		  	{{/each}}
+	</div>
+	
+</template>

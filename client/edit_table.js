@@ -65,7 +65,7 @@ Template.edit_table.events({
   "click .js-remove-table": function () {
 
 
-    var r = confirm("Are you sure to remove the table?");
+    var r = confirm("sei sicuro di rimuovere il tavolo?");
     if (r == true) {
        var tableId = Session.get("tableId"); 
       var table = Tables.findOne({_id:tableId}); 

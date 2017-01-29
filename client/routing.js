@@ -64,7 +64,18 @@ Router.route('/play', function () {
 
 
 
-
+Router.route('/rankings', function () {
+  if (!Meteor.userId()){// not logged in
+      alert("please log in!"); 
+      this.render("navbar", {to:"header"});
+      this.render("landing_page", {to:"main"});
+  } else {
+      console.log("rankings");
+    this.render("navbar", {to:"header"});
+    this.render("rankings", {to:"main"});
+  }
+  
+});
 
 Router.route('/active_tables', function () {
 	if (!Meteor.userId()){// not logged in

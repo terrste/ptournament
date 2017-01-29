@@ -1,32 +1,48 @@
 <template name="table_hands">
 	<div class="container">
-		<div class="alert alert-info alert-dismissible" role="alert">
+		<!-- <div class="alert alert-info alert-dismissible" role="alert">
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  <strong>This warning with instructions is for revision purpose only</strong><br>
 		  Here you can see all inserted hands of the table, with winner and point. You can remove a hand or return to "current table" view.
-		</div>
+		</div> -->
 		
-		    <h1>Table hands</h1>   
+		    <h1>Mani giocate</h1>   
 
-		<a href="/current_table" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;current table</a>
+		<a href="/current_table" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;tavolo corrente</a>
 		{{#each hands}}
 			{{#let plateId=_id}}
+			{{#let plateType=type}}
 			{{#let rowIndex=@index}}
-			{{#each winners}}
+			{{#if winners}}
+				{{#each winners}}
 
-		  	<div class="row table-hands">
-		  		<div class="col-xs-3">
-		  			<div type="button" class="btn btn-danger js-remove-table-hand" data-id="{{plateId}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;remove</div>
-		  		</div>
-		  		<div class="col-xs-1">{{rowIndex}}</div>
-		  		<div class="col-xs-2"><img src="/{{user.profile.avatar}}" class="hands_avatar_img" title="{{user.profile.username}}"></div>		
-		  		<div class="col-xs-5">{{hand.name}}  ({{point_suit.name}}  {{point_height.name}})</div>	
-		  		{{#if isStud hand point_height}}
-			        <div class="col-xs-1"><span class="glyphicon glyphicon-star glyph-color" aria-hidden="true"></span></div>
-			    {{/if}}		
-		  		
-		  	</div>
-		  	{{/each}}
+				  	<div class="row table-hands">
+				  		<div class="col-xs-3">
+				  			<div type="button" class="btn btn-danger js-remove-table-hand" data-id="{{plateId}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;canc</div>
+				  		</div>
+				  		<div class="col-xs-1">{{rowIndex}}</div>
+				  		<div class="col-xs-2"><img src="/avatar/{{user.profile.avatar}}" class="hands_avatar_img" title="{{user.profile.username}}"></div>		
+				  		<div class="col-xs-5">{{hand.name}} {{point_suit.name}} {{point_height.name}}</div>	
+				  		{{#if isStud hand point_height}}
+					        <div class="col-xs-1"><span class="glyphicon glyphicon-star glyph-color" aria-hidden="true"></span></div>
+					    {{/if}}		
+				  		
+				  	</div>
+			  	{{/each}}
+			{{else}}
+				<div class="row table-hands">
+			  		<div class="col-xs-3">
+			  			<div type="button" class="btn btn-danger js-remove-table-hand" data-id="{{plateId}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;canc</div>
+			  		</div>
+			  		<div class="col-xs-1">{{rowIndex}}</div>
+			  		<div class="col-xs-2"><img src="/img/{{plateType}}.png" class="hands_avatar_img" title="{{plateTypeName plateType}}"></div>		
+			  		<div class="col-xs-5">{{plateTypeName plateType}}<!-- {{hand.name}} {{point_suit.name}} {{point_height.name}} --></div>	
+			  		
+			  		
+			  	</div>
+			{{/if}}
+			
+		  	{{/let}}
 		  	{{/let}}
 		  	{{/let}}
 		 {{/each}}

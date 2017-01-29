@@ -1,7 +1,7 @@
 <template name="active_tables">	
 	<div class="container">
 	 
-		<div class="alert alert-info alert-dismissible" role="alert">
+		<!-- <div class="alert alert-info alert-dismissible" role="alert">
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		  <strong>This warning with instructions is for revision purpose only</strong><br><br>
 		  Here you can create a new table.<br><br>
@@ -9,9 +9,9 @@
 		  - grey: the table is in state created, you can add or remove players and then you can start playing<br>
 		  - yellow: the table is in state running, you can't add or remove player, you can only click play and go in "current table" view, where you can insert point or close the table.<br>
 		  - red: the table in state closed, you can re-start the table or remove it from the list		  
-		</div>
+		</div> -->
 
-		<h1>Active tables</h1> 	
+		<h1>Tavoli attivi</h1> 	
 		
 		
 		
@@ -31,20 +31,22 @@
 					  	{{/each}} -->
 
 					  	
-					  	<div>Table of {{numberOfPlayers _id}} players created on {{getDate date}}</div>				  	
+					  	<div>Tavolo di {{numberOfPlayers _id}} giocatori del {{getDate date}}</div>				  	
 					  	
-					  	<div>state: {{state}}, {{numberOfHands _id}} hands played</div>
-					  	<div>players: {{players_names _id}}</div>
+					  	<div>stato: {{state}}, {{numberOfHands _id}} mani giocate</div>
+					  	<!-- <div>players: {{players_names _id}}</div> -->
 					  	{{#each players _id}}
-					  		<img src="/{{profile.avatar}}" class="hands_avatar_img" title="{{profile.username}}">
+					  		<img src="/avatar/{{profile.avatar}}" class="hands_avatar_img" title="{{profile.username}}">
 					  	{{/each}}
 			   		</a>
 				</div>
 		  	{{/each}}
 		  	<div class="col-xs-12" style="margin-top: 20px;">
-				<a href="/edit_table/new" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;new table</a>
+				<a href="/edit_table/new" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;nuovo tavolo</a>
 			</div>
 		</div>
 		<!-- <a href="/edit_table/new" type="button" class="btn btn-warning" style="position:fixed; bottom: 10px; right: 10px;">+</a> -->
+		<div class="chiusura-pagina"></div>
 	</div>	
+
 </template>

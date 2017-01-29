@@ -1,8 +1,14 @@
 Template.table_hands.helpers({
   hands:function(){
-    var hands = Session.get("table_hands"); 
+    //var hands = Session.get("table_hands"); 
+    var hands = Plates.find({table: Session.get("tableId")}).fetch();
     console.log("SESSION HANDS"); 
     console.log(hands); 
+
+    /*for (var i=0; i<hands.length; i++){
+      console.log(JSON.stringify(hands[i])); 
+    }*/
+
     return hands; 
   },
   isStud: function(hand, point_height){
@@ -10,6 +16,16 @@ Template.table_hands.helpers({
     if (hand.value > 6 || ((hand.value==6) && (point_height.value > 10))){
       result = true; 
     } 
+    return result; 
+  },
+
+  plateTypeName: function(type){
+    var result = false;
+    if (type==3){
+      result = "piatto parol"; 
+    } else if(type==4){
+      result = "non aperto"; 
+    }
     return result; 
   }
 });

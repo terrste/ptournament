@@ -200,7 +200,7 @@ Template.telesina_winners.events({
         var player = users[i];
 
         for(var j=0; j<plates.length; j++){
-          for(var k=0; k<plates[j].winners.length; k++){
+          for(var k=0; (plates[j].winners) && (k<plates[j].winners.length); k++){
             if(plates[j].winners[k].user != null && plates[j].winners[k].user != undefined){
               if(plates[j].winners[k].user._id == player._id){
                 points++; 
@@ -219,7 +219,7 @@ Template.telesina_winners.events({
       console.log("FINE METODO"); 
 
     } else {
-        alert("wrong number of winners, required: " + current_telesina.plates); 
+        alert("Numero sbagliato di vincitori, richiesti: " + current_telesina.plates); 
     }
 
     

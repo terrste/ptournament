@@ -78,5 +78,62 @@ Template.current_table.events({
 
 
     
+  },
+
+  //TODO: eliminare uno dei due metodi seguenti e unificare parametrizzando
+
+  "click .js-add-piattoparol": function () {      
+      
+      //console.log("VIEW WINNER" + this.params._id);
+      event.preventDefault();
+      var tableId = Session.get("tableId"); 
+      
+      var plate = {
+        table: tableId, 
+        type:3,
+        winners:null
+      }  
+
+      Meteor.call("addPlate", plate);
+
+      var users = Meteor.users.find().fetch();
+      //console.log(users); 
+      var plates = Plates.find({table: tableId}).fetch();
+
+      Session.set("table_hands",plates); 
+
+      console.log(plates); 
+      var players = []; 
+
+      players = getPlayersWithPoints(users, plates);
+      Session.set("player",players); 
+      Router.go('/current_table');
+  },
+  "click .js-add-piattononaperto": function () {      
+      
+      //console.log("VIEW WINNER" + this.params._id);
+      event.preventDefault();
+      var tableId = Session.get("tableId"); 
+      
+      var plate = {
+        table: tableId, 
+        type:4,
+        winners:null
+      }  
+
+      Meteor.call("addPlate", plate);
+
+      var users = Meteor.users.find().fetch();
+      //console.log(users); 
+      var plates = Plates.find({table: tableId}).fetch();
+
+      Session.set("table_hands",plates); 
+
+      console.log(plates); 
+      var players = []; 
+
+      players = getPlayersWithPoints(users, plates);
+      Session.set("player",players); 
+      Router.go('/current_table');
   }
 });

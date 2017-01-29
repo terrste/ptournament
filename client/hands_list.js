@@ -4,7 +4,10 @@ Template.hands_list.helpers({
   },
 
   hands:function(){
-    return hands;
+
+    //objs.sort(function(a,b) {return (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0);} ); 
+
+    return hands.sort(function(a,b) {return (a.value > b.value) ? 1 : ((b.value > a.value) ? -1 : 0);} );
   },
 
   isPointHi: function(id){
