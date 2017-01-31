@@ -23,6 +23,11 @@ Template.rankings.helpers({
     	var player = users[i];
     	var userHands = 0; 
     	var userPoints = 0; 
+      var userTelesinaHands = 0; 
+      var userTelesinaPoints = 0; 
+      var userPokerHands = 0; 
+      var userPokerPoints = 0; 
+
     	for (var tabj=0; tabj<tables.length; tabj++){
     		var bIsUserInTable = isUserInTable(users[i]._id,tables[tabj]); 
 	    		
@@ -35,11 +40,39 @@ Template.rankings.helpers({
 	    		if (bIsUserInTable && (plates[platek].table == tables[tabj]._id)){
 	    			userPoints = userPoints + getPointInHand(users[i]._id,plates[platek]);
 	    		}
+
+          //Calcolo punti telesina
+          if (bIsUserInTable && (plates[platek].type==2) && (plates[platek].table == tables[tabj]._id)){
+            userTelesinaHands++;
+          }
+
+          if (bIsUserInTable && (plates[platek].type==2) && (plates[platek].table == tables[tabj]._id)){
+            userTelesinaPoints = userTelesinaPoints + getPointInHand(users[i]._id,plates[platek]);
+          }
+
+          //Calcolo punti poker
+          if (bIsUserInTable && (plates[platek].type!=2) && (plates[platek].table == tables[tabj]._id)){
+            userPokerHands++;
+          }
+
+          if (bIsUserInTable && (plates[platek].type!=2) && (plates[platek].table == tables[tabj]._id)){
+            userPokerPoints = userPokerPoints + getPointInHand(users[i]._id,plates[platek]);
+          }
 	    	}	
     	}
     	player.userHands = userHands; 
     	player.userPoints = userPoints; 
+
+      player.userTelesinaHands = userTelesinaHands; 
+      player.userTelesinaPoints = userTelesinaPoints; 
+
+      player.userPokerHands = userPokerHands; 
+      player.userPokerPoints = userPokerPoints; 
+
     	player.userMean = userHands?parseFloat((userPoints/userHands)).toFixed(2):0; 
+      player.userTelesinaMean = userTelesinaHands?parseFloat((userTelesinaPoints/userTelesinaHands)).toFixed(2):0; 
+      player.userPokerMean = userPokerHands?parseFloat((userPokerPoints/userPokerHands)).toFixed(2):0; 
+      
     	players.push(player); 
 
     }
