@@ -5,7 +5,18 @@ Template.rankings.helpers({
     return plates; 
   },*/
 
+  settings: function () {
+        return {
+            /*collection: collection,*/
+            rowsPerPage: 12,
+            showFilter: true,
+            fields: ['giocatore', 'mani', 'punti','MVP','MVPP','MVPT']
+        };
+    },
+
   rankings:function(){
+
+
 
   	var users = Meteor.users.find().fetch();
 
@@ -17,6 +28,7 @@ Template.rankings.helpers({
   	}
     var plates = Plates.find({"table": { "$in": tablesId }}).fetch();
 
+    var tablePlayers = [];
     var players = [];
     for (var i=0; i<users.length; i++){
     	//calcolo delle mani giocate per ogni giocatore
@@ -60,6 +72,7 @@ Template.rankings.helpers({
           }
 	    	}	
     	}
+
     	player.userHands = userHands; 
     	player.userPoints = userPoints; 
 
@@ -75,18 +88,42 @@ Template.rankings.helpers({
       
     	players.push(player); 
 
+      /*var tablePlayer = {
+        username:player.profile.username,
+        userHands : player.userHands, 
+        userPoints :player.userPoints, 
+        userMean : player.userMean,
+        userPokerMean : player.userPokerMean, 
+        userTelesinaMean :player.userTelesinaMean 
+      }*/
+
+      var tablePlayer = {
+        user:(player.profile.username.length > 8)?player.profile.username.substr(0,8):player.profile.username,
+        mani : player.userHands, 
+        punti :player.userPoints, 
+        MVP : player.userMean,
+        MVPP : player.userPokerMean, 
+        MVPT :player.userTelesinaMean 
+      }
+      
+      
+
+
+      tablePlayers.push(tablePlayer); 
     }
 
-    console.log(JSON.stringify(players));
+    //console.log(JSON.stringify(players));
 
   	var result = {
+      tablePlayers: tablePlayers,
   		players: players,
   		n_players: players.length,
   		hands: plates,
   		n_hands: plates.length
   	}
 
-  	
+    console.log(JSON.stringify(tablePlayers)); 
+    refreshTable(null,tablePlayers);
 
     return result;
   }

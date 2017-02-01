@@ -359,3 +359,35 @@ box-shadow: 0px 0px 32px 2px rgba(168,240,60,1);
 }
 
 
+
+/*SVG TABLE*/
+svg {
+  vertical-align: middle;
+  background: rgba(255,255,255, 0.2);
+  box-shadow: inset 0 0 3px 0px #CECECE;
+}
+
+.canvas{
+  width: 330px;
+  height: 403px;
+}
+
+.header rect{
+  fill: #5cb85c;
+}
+
+.header text{
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.cell rect{
+  fill: #EEEEEE;
+}
+
+.cell text{
+  fill: black;
+  font: 10px sans-serif;
+  text-anchor: middle;
+}

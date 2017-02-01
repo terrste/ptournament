@@ -1,22 +1,32 @@
 <template name="rankings">
 	<div class="container">
 				
-		    <h1>Classifiche</h1>   
-		    <div>Numero giocatori:{{rankings.n_players}}</div>
-			<div>Numero mani:{{rankings.n_hands}}</div>
+		    <h3>Classifiche</h3>   
+<!-- <div>Numero giocatori:{{rankings.n_players}}</div> -->
+	    	<svg class="canvas"></svg>
 
-			{{#each rankings.players}}
-			  	<div>		  		
-					Player: {{profile.username}} &nbsp; {{userHands}}  &nbsp; {{userPoints}} &nbsp; {{userMean}}					
-			  	</div>
-			  	<div>		  		
-					Player: {{profile.username}} &nbsp; {{userTelesinaHands}}  &nbsp; {{userTelesinaPoints}} &nbsp; {{userTelesinaMean}}					
-			  	</div>
-			  	<div>		  		
-					Player: {{profile.username}} &nbsp; {{userPokerHands}}  &nbsp; {{userPokerPoints}} &nbsp; {{userPokerMean}}					
-			  	</div>
+		   <!--  <div>Numero giocatori:{{rankings.n_players}}</div>
+			<div>Numero mani:{{rankings.n_hands}}</div> -->
 
-		  	{{/each}}
+			<!-- <div class="row">
+				<div class="col-sx-12">
+					{{> reactiveTable class="table table-bordered table-hover" rowsPerPage=12 collection=rankings.tablePlayers}}
+				</div>
+			</div>
+			 -->
+
+			<!-- {{#each rankings.players}}
+				<div class="row">
+					<div class="col-xs-7">{{profile.username}}</div>
+					<div class="col-xs-1">{{userHands}}</div>
+					<div class="col-xs-1">{{userPoints}}</div>
+					<div class="col-xs-1">{{userMean}}</div>
+					<div class="col-xs-1"> {{userTelesinaMean}}</div>
+					<div class="col-xs-1"> {{userPokerMean}}</div>
+				</div>
+			  	
+
+		  	{{/each}} -->
 	</div>
 	
 </template>

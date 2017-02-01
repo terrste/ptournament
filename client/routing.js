@@ -52,18 +52,6 @@ Router.route('/play', function () {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 Router.route('/rankings', function () {
   if (!Meteor.userId()){// not logged in
       alert("please log in!"); 
@@ -73,6 +61,7 @@ Router.route('/rankings', function () {
       console.log("rankings");
     this.render("navbar", {to:"header"});
     this.render("rankings", {to:"main"});
+
   }
   
 });
