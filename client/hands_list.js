@@ -1,5 +1,7 @@
 Template.hands_list.helpers({
   userWinner:function(){
+
+    
     return Session.get("userWinner"); 
   },
 
@@ -85,8 +87,19 @@ Template.hands_list.events({
   }
 });
 
+Template.hands_list.onRendered(function() {
 
+      if(Session.get("userWinner")){
+        
+        var sound = document.getElementById("audio2");
+        var src = "/music/" + Session.get("userWinner").profile.username + ".wav";           
+        sound.src = src;
+        sound.load();
+        sound.play();
+      }
+          
 
+  });
 
 
 

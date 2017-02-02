@@ -50,8 +50,9 @@ Template.point_heights.events({
       console.log(plates); 
       var players = []; 
 
-players = getPlayersWithPoints(users, plates);
+      players = getPlayersWithPoints(users, plates);
       Session.set("player",players); 
+      
       Router.go('/current_table');
   }
 });
