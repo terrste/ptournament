@@ -59,6 +59,7 @@ Router.route('/rankings', function () {
       this.render("landing_page", {to:"main"});
   } else {
       console.log("rankings");
+
     this.render("navbar", {to:"header"});
     this.render("rankings", {to:"main"});
 
@@ -75,6 +76,19 @@ Router.route('/active_tables', function () {
   	  console.log("active tables");
 	  this.render("navbar", {to:"header"});
 	  this.render("active_tables", {to:"main"});
+  }
+  
+});
+
+Router.route('/add_inc/:_id', function () {
+  if (!Meteor.userId()){// not logged in
+      alert("please log in!"); 
+      this.render("navbar", {to:"header"});
+      this.render("landing_page", {to:"main"});
+  } else {
+    console.log("add_inc tables");
+    this.render("navbar", {to:"header"});
+    this.render("add_inc", {to:"main"});
   }
   
 });

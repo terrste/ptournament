@@ -1,15 +1,9 @@
-<template name="table_hands">
+<template name="add_inc">
 	<div class="container">
-		<!-- <div class="alert alert-info alert-dismissible" role="alert">
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		  <strong>This warning with instructions is for revision purpose only</strong><br>
-		  Here you can see all inserted hands of the table, with winner and point. You can remove a hand or return to "current table" view.
-		</div> -->
-		
-		    <h1>Mani giocate</h1>   
+		   
 
-		<a href="/current_table" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;tavolo corrente</a>
-		{{#each hands}}
+		<a href="/table_hands" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;mani giocate</a>
+		<!-- {{#each hands}}
 			{{#let plateId=_id}}
 			{{#let plateType=type}}
 			{{#let rowIndex=@index}}
@@ -41,7 +35,7 @@
 			  		</div>
 			  		<div class="col-xs-1">{{rowIndex}}</div>
 			  		<div class="col-xs-2"><img src="/img/{{plateType}}.png" class="hands_avatar_img" title="{{plateTypeName plateType}}"></div>		
-			  		<div class="col-xs-5">{{plateTypeName plateType}}<!-- {{hand.name}} {{point_suit.name}} {{point_height.name}} --></div>	
+			  		<div class="col-xs-5">{{plateTypeName plateType}}</div>	
 			  		
 			  		
 			  	</div>
@@ -50,7 +44,7 @@
 		  	{{/let}}
 		  	{{/let}}
 		  	{{/let}}
-		 {{/each}}
+		 {{/each}} -->
 	</div>
 	
 </template>

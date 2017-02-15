@@ -1,24 +1,6 @@
 
-Template.rankings.helpers({
- /* plates:function(){
-    var plates = Plates.find({"active":true}).fetch();
-    return plates; 
-  },*/
-
-  settings: function () {
-        return {
-            /*collection: collection,*/
-            rowsPerPage: 12,
-            showFilter: true,
-            fields: ['giocatore', 'mani', 'punti','MVP','MVPP','MVPT']
-        };
-    },
-
-  rankings:function(){
-
-
-
-  	var users = Meteor.users.find().fetch();
+Template.rankings.rendered = function(){
+	var users = Meteor.users.find().fetch();
 
   	var tables = Tables.find({"active":true}).fetch();
   	var tablesId = [];
@@ -32,13 +14,13 @@ Template.rankings.helpers({
     var players = [];
     for (var i=0; i<users.length; i++){
     	//calcolo delle mani giocate per ogni giocatore
-    	var player = users[i];
-    	var userHands = 0; 
-    	var userPoints = 0; 
-      var userTelesinaHands = 0; 
-      var userTelesinaPoints = 0; 
-      var userPokerHands = 0; 
-      var userPokerPoints = 0; 
+    var player = users[i];
+    var userHands = 0; 
+    var userPoints = 0; 
+    var userTelesinaHands = 0; 
+    var userTelesinaPoints = 0; 
+    var userPokerHands = 0; 
+    var userPokerPoints = 0; 
 
     	for (var tabj=0; tabj<tables.length; tabj++){
     		var bIsUserInTable = isUserInTable(users[i]._id,tables[tabj]); 
@@ -122,11 +104,28 @@ Template.rankings.helpers({
   		n_hands: plates.length
   	}
 
-    console.log(JSON.stringify(tablePlayers)); 
+    // console.log(JSON.stringify(tablePlayers)); 
     refreshTable(null,tablePlayers);
 
-    return result;
-  }
+};
+
+
+
+
+Template.rankings.helpers({
+ /* plates:function(){
+    var plates = Plates.find({"active":true}).fetch();
+    return plates; 
+  },*/
+
+  settings: function () {
+        return {
+            /*collection: collection,*/
+            rowsPerPage: 12,
+            showFilter: true,
+            fields: ['giocatore', 'mani', 'punti','MVP','MVPP','MVPT']
+        };
+    }
  
 });
 

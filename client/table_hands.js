@@ -48,5 +48,11 @@ Template.table_hands.events({
     });   
 
     
+  },
+  "click .js-add-inc": function (event) {
+    var plateId = event.currentTarget.getAttribute('data-id');
+    
+    Router.go('/add_inc/' + plateId);
+    
   }
 });
