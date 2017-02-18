@@ -12,6 +12,9 @@ Template.rankings.rendered = function(){
 
     var tablePlayers = [];
     var players = [];
+
+    var arrPoints = [];
+
     for (var i=0; i<users.length; i++){
     	//calcolo delle mani giocate per ogni giocatore
     var player = users[i];
@@ -21,6 +24,7 @@ Template.rankings.rendered = function(){
     var userTelesinaPoints = 0; 
     var userPokerHands = 0; 
     var userPokerPoints = 0; 
+    var userMastroTelesinaPoints = 0;
 
     	for (var tabj=0; tabj<tables.length; tabj++){
     		var bIsUserInTable = isUserInTable(users[i]._id,tables[tabj]); 
@@ -38,20 +42,37 @@ Template.rankings.rendered = function(){
           //Calcolo punti telesina
           if (bIsUserInTable && (plates[platek].type==2) && (plates[platek].table == tables[tabj]._id)){
             userTelesinaHands++;
-          }
-
-          if (bIsUserInTable && (plates[platek].type==2) && (plates[platek].table == tables[tabj]._id)){
             userTelesinaPoints = userTelesinaPoints + getPointInHand(users[i]._id,plates[platek]);
           }
+
+          /*if (bIsUserInTable && (plates[platek].type==2) && (plates[platek].table == tables[tabj]._id)){
+            userTelesinaPoints = userTelesinaPoints + getPointInHand(users[i]._id,plates[platek]);
+          }*/
 
           //Calcolo punti poker
           if (bIsUserInTable && (plates[platek].type!=2) && (plates[platek].table == tables[tabj]._id)){
             userPokerHands++;
+            userPokerPoints = userPokerPoints + getPointInHand(users[i]._id,plates[platek]);
+            userMastroTelesinaPoints = userMastroTelesinaPoints + getNumberOfStudPoints(users[i]._id,plates[platek]);
+
+            //creazione del punto da inserire nell'array per il calcolo del punto piu alto
+            /*var pointHeigher = {
+              username: 'username'
+              
+            }
+            arrPoints.push(pointHeigher);*/
+
+          }
+
+          /*if (bIsUserInTable && (plates[platek].type!=2) && (plates[platek].table == tables[tabj]._id)){
+            userPokerPoints = userPokerPoints + getPointInHand(users[i]._id,plates[platek]);
           }
 
           if (bIsUserInTable && (plates[platek].type!=2) && (plates[platek].table == tables[tabj]._id)){
-            userPokerPoints = userPokerPoints + getPointInHand(users[i]._id,plates[platek]);
+            userMastroTelesinaPoints = userMastroTelesinaPoints + getNumberOfStudPoints(users[i]._id,plates[platek]);
           }
+*/
+
 	    	}	
     	}
 
@@ -67,6 +88,7 @@ Template.rankings.rendered = function(){
     	player.userMean = userHands?parseFloat((userPoints/userHands)).toFixed(2):0; 
       player.userTelesinaMean = userTelesinaHands?parseFloat((userTelesinaPoints/userTelesinaHands)).toFixed(2):0; 
       player.userPokerMean = userPokerHands?parseFloat((userPokerPoints/userPokerHands)).toFixed(2):0; 
+      player.userMastroTelesinaPoints = userPokerHands?parseFloat((userMastroTelesinaPoints/userPokerHands)).toFixed(2):0; 
       
     	players.push(player); 
 
@@ -85,7 +107,8 @@ Template.rankings.rendered = function(){
         punti :player.userPoints, 
         MVP : player.userMean,
         MVPP : player.userPokerMean, 
-        MVPT :player.userTelesinaMean 
+        MVPT :player.userTelesinaMean,
+        MT:  player.userMastroTelesinaPoints 
       }
       
       
@@ -123,7 +146,7 @@ Template.rankings.helpers({
             /*collection: collection,*/
             rowsPerPage: 12,
             showFilter: true,
-            fields: ['giocatore', 'mani', 'punti','MVP','MVPP','MVPT']
+            fields: ['giocatore', 'mani', 'punti','MVP','MVPP','MVPT','MT']
         };
     }
  
