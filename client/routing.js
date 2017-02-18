@@ -26,7 +26,7 @@ Router.route('/play', function () {
           Session.set("active_tables", tables); 
           for (var i = 0; i<tables.length; i++){
               for (var j=0; j<tables[i].players.length; j++){
-                console.log("tables: i " + i + " J: " + j); 
+                // console.log("tables: i " + i + " J: " + j); 
                 if (tables[i].players[j] == Meteor.userId()){ //user is in running table
                     if (tables[i].state == 'running'){
                         Session.set("tableId", tables[i]._id); 

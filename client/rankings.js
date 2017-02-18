@@ -56,11 +56,26 @@ Template.rankings.rendered = function(){
             userMastroTelesinaPoints = userMastroTelesinaPoints + getNumberOfStudPoints(users[i]._id,plates[platek]);
 
             //creazione del punto da inserire nell'array per il calcolo del punto piu alto
-            /*var pointHeigher = {
-              username: 'username'
+            if(plates[platek].winners){
+              var winner = plates[platek].winners[0];
+              if (users[i]._id == winner.user._id){
+                  var pointHeigher = {
+                  username: users[i].profile.username,
+                  hand_value: winner.hand?winner.hand.value:0,
+                  hand_name: winner.hand?winner.hand.name:'',
+                  suit_value:winner.point_suit?winner.point_suit.value:0,
+                  suit_name: winner.point_suit?winner.point_suit.name:'',
+                  height_value: winner.point_height?winner.point_height.value:0,
+                  height_name: winner.point_height?winner.point_height.name:'',
+                  date: plates[platek].date
+
+                }
+                arrPoints.push(pointHeigher);
+              }
+              
               
             }
-            arrPoints.push(pointHeigher);*/
+            
 
           }
 
@@ -75,6 +90,9 @@ Template.rankings.rendered = function(){
 
 	    	}	
     	}
+
+
+     
 
     	player.userHands = userHands; 
     	player.userPoints = userPoints; 
@@ -117,6 +135,7 @@ Template.rankings.rendered = function(){
       tablePlayers.push(tablePlayer); 
     }
 
+     console.log(JSON.stringify(arrPoints.sort(sortPoint)));
     //console.log(JSON.stringify(players));
 
   	var result = {
