@@ -1,27 +1,14 @@
 
-Template.rankings.rendered = function(){
-
-Meteor.call("royal_hands2", function(err,res){
-  if(!err){
-    var rrank = [];
-    for(var i=0; i<res.length; i++){
-        var win = {
-          username: res[i].winners[0].user.profile.username,
-          hand: res[i].winners[0].hand.name,
-          point_height: res[i].winners[0].point_height.name,
-          date: res[i].date
-        }
-        rrank.push(win);
-
-    }
-    console.log(rrank);
-    Session.set("royal_ranking",rrank);
-  }
-});
-
+Template.rankings_by_date.rendered = function(){
 	var users = Meteor.users.find().fetch();
 
-  	var tables = Tables.find({"active":true}).fetch();
+  	var tables = Tables.find({
+  		"active":true,
+  		"date":{
+  			//"$gt": new Date("2016-12-31T00:00:00.000z"),
+			"$lt": new Date("2017-06-01T00:00:00.000z")
+
+		}}).fetch();
   	var tablesId = [];
   	console.log("numero tavoli attivi:" + tables.length);
   	for(var i=0; i<tables.length; i++){
@@ -154,7 +141,7 @@ Meteor.call("royal_hands2", function(err,res){
       tablePlayers.push(tablePlayer); 
     }
 
-     //console.log(JSON.stringify(arrPoints.sort(sortPoint)));
+     console.log(JSON.stringify(arrPoints.sort(sortPoint)));
     //console.log(JSON.stringify(players));
 
   	var result = {
@@ -167,13 +154,14 @@ Meteor.call("royal_hands2", function(err,res){
 
     // console.log(JSON.stringify(tablePlayers)); 
     refreshTable(null,tablePlayers);
+	
 
 };
 
 
 
 
-Template.rankings.helpers({
+Template.rankings_by_date.helpers({
  /* plates:function(){
     var plates = Plates.find({"active":true}).fetch();
     return plates; 
@@ -186,45 +174,10 @@ Template.rankings.helpers({
             showFilter: true,
             fields: ['giocatore', 'mani', 'punti','MVP','MVPP','MVPT','MT']
         };
-    },
-
-    royal_hands2: function(){
-        return Session.get("royal_ranking"); 
-      
-      
-    },
-getDate: function(handsDate){
-    var time = handsDate.toLocaleTimeString().toLowerCase();
-    var day = $.datepicker.formatDate("dd/mm/yy", handsDate); 
-    return  day + " " + time;
-  },
-    royal_hands: function(){
-      var plates = Plates.find({},{sort:{"winners.hand.value":-1,"winners.point_height.value":-1, "date":1},limit:10}).fetch();
-      console.log("OK");
-      console.log(plates);
-      return plates;
-    },
-
-    winner_username: function(winners){
-        return winners[0].user.profile.username;
     }
-
-
-
-    
+ 
  
 });
-
-
-isUserInTable = function(userId,table){
-	var players = table.players;
-	for(var i=0; i< players.length; i++){
-		if(players[i] == userId){
-			return true; 
-		}
-	}
-	return false;
-}
 
 
 

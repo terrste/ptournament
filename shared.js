@@ -41,6 +41,15 @@ Meteor.methods({
     plate.date = new Date();
     plateId = Plates.insert(plate);
     return plateId;
-  }
+  },
+
+  royal_hands: function(){
+      //var rh = Plates.aggregate([{$lookup:{from:"tables",localField:"table",foreignField:"_id",as:"table_info"}},{$unwind:"$table_info"},{$match:{$and:[{"table_info.active":true}]}},{$sort:{"winners.hand.value":-1,"winners.point_height.value":-1,"date":1}},{$limit:10}]);
+      var plates = Plates.find({},{sort:{"winners.hand.value":-1,"winners.point_height.value":-1, "date":1},limit:10}).fetch();
+
+      console.log(plates);
+      return plates;
+
+    }
 
 })

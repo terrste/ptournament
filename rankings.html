@@ -3,6 +3,7 @@
 				
 		    <h3>Classifiche</h3>   
 		    <!-- <div>Numero giocatori:{{rankings.n_players}}</div> -->
+		    
 	    	<svg class="canvas"></svg>
 
 		   <!--  <div>Numero giocatori:{{rankings.n_players}}</div>
@@ -28,6 +29,14 @@
 
 		  	{{/each}} -->
 		  	<!-- <div>Numero giocatori:{{rankings.n_players}}</div> -->
+
+		  	{{#each royal_hands2}}
+				<div class="row">
+					
+					<div class="col-xs-12">{{username}} ({{hand}} {{point_height}}) {{getDate date}}</div>
+					
+				</div>
+		  	{{/each}}
 	</div>
 	
 </template>

@@ -4,7 +4,7 @@ Template.hands_list.helpers({
     
     return Session.get("userWinner"); 
   },
-
+ 
   hands:function(){
 
     //objs.sort(function(a,b) {return (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0);} ); 

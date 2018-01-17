@@ -2,7 +2,7 @@ Template.active_tables.helpers({
   activeTables:function(userId){
     var tables;
     if(!Session.get(tables)){
-      tables  = Tables.find({active:true}).fetch();
+      tables  = Tables.find({active:true}, {sort: {date: -1}}).fetch();
       Session.set("active_tables", tables); 
     }        
     return Session.get("active_tables");
@@ -21,6 +21,40 @@ Template.active_tables.helpers({
     return plates.length; 
   },
 
+  hands:function(tableId){
+    //var hands = Session.get("table_hands"); 
+    var hands = Plates.find({table: tableId}).fetch();
+    
+    return hands; 
+  },
+
+isStud: function(hand, point_height){
+    var result = false;
+    if (hand.value > 6 || ((hand.value==6) && (point_height.value > 10))){
+      result = true; 
+    } 
+    return result; 
+  },
+
+  plateTypeName: function(type){
+    var result = false;
+    if (type==3){
+      result = "piatto parol"; 
+    } else if(type==4){
+      result = "non aperto"; 
+    }
+    return result; 
+  },
+
+
+
+  player_name: function(userId){    
+      var user = Meteor.users.findOne({_id: userId});
+      var username = user.profile.username;
+
+   
+    return username;  
+  },
   players_names: function(tableId){
     var table = Tables.findOne({_id:tableId}); 
     var result = "";

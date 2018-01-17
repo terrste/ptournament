@@ -1,4 +1,7 @@
 Template.table_hands.helpers({
+  activeTable: function(){
+    return Session.get("tableId"); 
+  },
   hands:function(){
     //var hands = Session.get("table_hands"); 
     var hands = Plates.find({table: Session.get("tableId")}).fetch();
