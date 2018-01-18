@@ -1,10 +1,30 @@
 Template.active_tables.helpers({
   activeTables:function(userId){
+    console.log("year:" + Session.get("year"));
     var tables;
-    if(!Session.get(tables)){
-      tables  = Tables.find({active:true}, {sort: {date: -1}}).fetch();
-      Session.set("active_tables", tables); 
-    }        
+
+    var yearLimit = null; 
+    if (Session.get("year") != null){
+      yearLimit = getSessionYearLimits(Session.get("year"));
+    }
+
+    if (yearLimit != null){
+      if(!Session.get(tables)){
+        tables  = Tables.find({active:true,
+        "date":{
+          "$gt": yearLimit.start,
+          "$lt": yearLimit.end
+
+      }}, {sort: {date: -1}}).fetch();
+        Session.set("active_tables", tables); 
+      }        
+    } else { //non filtro per data
+      if(!Session.get(tables)){
+        tables  = Tables.find({active:true}, {sort: {date: -1}}).fetch();
+        Session.set("active_tables", tables); 
+      }       
+    }
+    
     return Session.get("active_tables");
   },
 
@@ -79,9 +99,13 @@ isStud: function(hand, point_height){
     return players;  
   },
 
-  getDate: function(tableDate){
+  getDate: function(handsDate){
+    
+    return  getDate2(handsDate);
+  }
+  /*getDate: function(tableDate){
     var time = tableDate.toLocaleTimeString().toLowerCase();
     var day = $.datepicker.formatDate("dd/mm/yy", tableDate); 
     return  day + " " + time;
-  }
+  }*/
 });

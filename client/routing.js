@@ -58,6 +58,7 @@ Router.route('/rankings', function () {
       this.render("navbar", {to:"header"});
       this.render("landing_page", {to:"main"});
   } else {
+    Session.set("year", null); 
       console.log("rankings");
 
     this.render("navbar", {to:"header"});
@@ -67,7 +68,23 @@ Router.route('/rankings', function () {
   
 });
 
-Router.route('/rankings_by_date', function () {
+Router.route('/rankings/:_year', function () {
+  if (!Meteor.userId()){// not logged in
+      alert("please log in!"); 
+      this.render("navbar", {to:"header"});
+      this.render("landing_page", {to:"main"});
+  } else {
+    Session.set("year", this.params._year); 
+      console.log("rankings");
+
+    this.render("navbar", {to:"header"});
+    this.render("rankings", {to:"main"});
+
+  }
+  
+});
+
+/*Router.route('/rankings_by_date', function () {
   if (!Meteor.userId()){// not logged in
       alert("please log in!"); 
       this.render("navbar", {to:"header"});
@@ -80,7 +97,7 @@ Router.route('/rankings_by_date', function () {
 
   }
   
-});
+});*/
 
 Router.route('/active_tables', function () {
 	if (!Meteor.userId()){// not logged in
@@ -88,9 +105,24 @@ Router.route('/active_tables', function () {
       this.render("navbar", {to:"header"});
       this.render("landing_page", {to:"main"});
   } else {
+    Session.set("year", null); 
   	  console.log("active tables");
 	  this.render("navbar", {to:"header"});
 	  this.render("active_tables", {to:"main"});
+  }
+  
+});
+
+Router.route('/active_tables/:_year', function () {
+  if (!Meteor.userId()){// not logged in
+      alert("please log in!"); 
+      this.render("navbar", {to:"header"});
+      this.render("landing_page", {to:"main"});
+  } else {
+    Session.set("year", this.params._year); 
+      console.log("active tables");
+    this.render("navbar", {to:"header"});
+    this.render("active_tables", {to:"main"});
   }
   
 });

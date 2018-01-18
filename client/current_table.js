@@ -71,7 +71,12 @@ Template.current_table.events({
       Meteor.call("updateTable", table);
       Session.set("current_table", table); 
       //console.log("current_table OUT"); 
-      Router.go('/active_tables');
+      if(Session.get("year")!=null){
+        Router.go('/active_tables/' + Session.get("year"));
+      } else {
+        Router.go('/active_tables');
+      }
+      
     } else {
         return;
     }

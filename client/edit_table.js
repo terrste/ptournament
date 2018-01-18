@@ -47,6 +47,9 @@ Template.edit_table.helpers({
       }      
       console.log('getClass result:' + result);
       return result?'table-user-selected':'table-user-unselected'; 
+  },
+  getYear: function(){
+    return Session.get("year");
   }
 });
 

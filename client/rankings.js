@@ -21,7 +21,29 @@ Meteor.call("royal_hands2", function(err,res){
 
 	var users = Meteor.users.find().fetch();
 
-  	var tables = Tables.find({"active":true}).fetch();
+
+var yearLimit = null; 
+    if (Session.get("year") != null){
+      yearLimit = getSessionYearLimits(Session.get("year"));
+    }
+
+var tables = null;
+
+    if (yearLimit != null){
+      tables = Tables.find({
+      "active":true,
+      "date":{
+          "$gt": yearLimit.start,
+          "$lt": yearLimit.end
+
+      }}).fetch();
+    } else {
+        tables = Tables.find({"active":true}).fetch();
+    }
+
+
+
+  	//var tables = Tables.find({"active":true}).fetch();
   	var tablesId = [];
   	console.log("numero tavoli attivi:" + tables.length);
   	for(var i=0; i<tables.length; i++){
@@ -194,10 +216,14 @@ Template.rankings.helpers({
       
     },
 getDate: function(handsDate){
+    
+    return  getDate2(handsDate);
+  },
+  /*getDate: function(handsDate){
     var time = handsDate.toLocaleTimeString().toLowerCase();
     var day = $.datepicker.formatDate("dd/mm/yy", handsDate); 
     return  day + " " + time;
-  },
+  },*/
     royal_hands: function(){
       var plates = Plates.find({},{sort:{"winners.hand.value":-1,"winners.point_height.value":-1, "date":1},limit:10}).fetch();
       console.log("OK");

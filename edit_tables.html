@@ -19,7 +19,7 @@
 		<h2>Tavolo ({{table.state}}), il {{getDate table.date}}</h2> 	
 
 	  	{{#if isRunning}}
-	        <a href="/active_tables" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;tavoli attivi</a>
+	        <a href="/active_tables/{{getYear}}" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;tavoli attivi</a>
 			<a href="/current_table" type="button" class="btn btn-primary">gioca&nbsp;<span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
 			<br>
 			<div class="row table-participant-div">
