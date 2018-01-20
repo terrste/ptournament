@@ -96,7 +96,8 @@ Template.current_table.events({
       var plate = {
         table: tableId, 
         type:3,
-        winners:null
+        winners:null,
+        creator: Meteor.userId()
       }  
 
       Meteor.call("addPlate", plate);
@@ -123,7 +124,8 @@ Template.current_table.events({
       var plate = {
         table: tableId, 
         type:4,
-        winners:null
+        winners:null,
+        creator: Meteor.userId()
       }  
 
       Meteor.call("addPlate", plate);

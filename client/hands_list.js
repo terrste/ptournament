@@ -66,7 +66,8 @@ Template.hands_list.events({
       var plate = {
         table: tableId, 
         type:1,
-        winners:[winner]
+        winners:[winner],
+        creator:Meteor.userId()
       }  
 
       Meteor.call("addPlate", plate);

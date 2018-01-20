@@ -327,7 +327,8 @@ Router.route('/telesina_winners/:_id', function () {
         table: tableId, 
         type:2,
         type_code: telesinaId,
-        winners:[]
+        winners:[],
+        creator:Meteor.userId()
   }  
 
   Session.set("telesina_plate", plate); 
