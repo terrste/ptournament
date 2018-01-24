@@ -134,6 +134,8 @@ Router.route('/add_inc/:_id', function () {
       this.render("landing_page", {to:"main"});
   } else {
     console.log("add_inc tables");
+    Session.set("currentPlateId", this.params._id)
+    Session.set("currentPlate",null);
     this.render("navbar", {to:"header"});
     this.render("add_inc", {to:"main"});
   }
@@ -171,16 +173,27 @@ Router.route('/edit_table/:_id', function () {
 	    }); 
 
 	  } else {
-	    var tableId = this.params._id; 
+	    //var tableId = this.params._id; 
+      tableId = this.params._id;
 	    Session.set("tableId", tableId);  
 	  
 	  }
-
 	  var currentTable  = Tables.findOne({_id:tableId});
 	  Session.set("current_table", currentTable); 
 
-	  this.render("navbar", {to:"header"});
-	  this.render("edit_table", {to:"main"});
+    var tablePlates = Plates.find({table: tableId}).fetch();
+
+    if(tablePlates != null && tablePlates.length > 0){
+      Router.go('/current_table/' + tableId);
+      // this.render("navbar", {to:"header"});
+      // this.render("current_table", {to:"main"});
+    } else {
+
+    this.render("navbar", {to:"header"});
+    this.render("edit_table", {to:"main"});
+    }
+
+
   }
 });
 

@@ -43,6 +43,19 @@ Meteor.methods({
     return plateId;
   },
 
+  updatePlate:function(plate){
+    
+    if (!this.userId){// not logged in
+      console.log("Update plate: not logged in");
+      return;
+    } else {
+      var ret = Plates.update(plate._id, plate);
+      console.log("update plate");
+      return; 
+    }    
+  },
+
+
   royal_hands: function(){
       //var rh = Plates.aggregate([{$lookup:{from:"tables",localField:"table",foreignField:"_id",as:"table_info"}},{$unwind:"$table_info"},{$match:{$and:[{"table_info.active":true}]}},{$sort:{"winners.hand.value":-1,"winners.point_height.value":-1,"date":1}},{$limit:10}]);
       var plates = Plates.find({},{sort:{"winners.hand.value":-1,"winners.point_height.value":-1, "date":1},limit:10}).fetch();

@@ -28,9 +28,10 @@ Template.edit_table.helpers({
   },
 
   getDate: function(tableDate){
-    var time = tableDate.toLocaleTimeString().toLowerCase();
-    var day = $.datepicker.formatDate("dd/mm/yy", tableDate); 
-    return  day + " " + time;
+    return  getDate2(tableDate);
+    // var time = tableDate.toLocaleTimeString().toLowerCase();
+    // var day = $.datepicker.formatDate("dd/mm/yy", tableDate); 
+    // return  day + " " + time;
   },
 
   getClass: function(userId){

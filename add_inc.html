@@ -3,48 +3,28 @@
 		   
 
 		<a href="/table_hands" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;mani giocate</a>
-		<!-- {{#each hands}}
-			{{#let plateId=_id}}
-			{{#let plateType=type}}
-			{{#let rowIndex=@index}}
-			{{#if winners}}
-				{{#each winners}}
-
-				  	<div class="row table-hands">
-				  		<div class="col-xs-3">
-				  			<div type="button" class="btn btn-danger js-remove-table-hand" data-id="{{plateId}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;canc</div>
-				  		</div>
-				  		<div class="col-xs-1">{{rowIndex}}</div>
-				  		<div class="col-xs-2"><img src="/avatar/{{user.profile.avatar}}" class="hands_avatar_img" title="{{user.profile.username}}"></div>		
-				  		<div class="col-xs-4">{{hand.name}} {{point_suit.name}} {{point_height.name}}</div>	
-				  		{{#if isStud hand point_height}}
-					        <div class="col-xs-1"><span class="glyphicon glyphicon-star glyph-color" aria-hidden="true"></span></div>
-					    {{else}}
-					    	<div class="col-xs-1"></div>
-					    {{/if}}	
-					    <div class="col-xs-1">
-				  			<div type="button" class="btn btn-danger js-add-inc" data-id="{{plateId}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></div>
-				  		</div>	
-				  		
+		<div class="row table-participant-div">
+			  	
+			  	{{#each users}}
+			  		{{#let userId=_id}}
+			  		{{#if isUserInTable _id}}
+				  	<div class="col-xs-12 {{getClass _id}}">						
+						<div class="user_avatar" style="padding-bottom: 5px;">
+							<img src="/avatar/{{profile.avatar}}" class="avatar_img">	
+							<div class="user-name">{{profile.username}}</div>		
+							<div class="user-points"  style="font-size: 3em;">{{getIncValue userId}}</div>	
+							
+							  
+							  	{{#each inc_points userId}}
+							  	<button type="button" class="btn btn-secondary js-inc-point" style="width: 13%;">{{value}}</button>
+							  	{{/each}}		
+						</div>
 				  	</div>
+				  	{{/if}}
+				  	{{/let}}
 			  	{{/each}}
-			{{else}}
-				<div class="row table-hands">
-			  		<div class="col-xs-3">
-			  			<div type="button" class="btn btn-danger js-remove-table-hand" data-id="{{plateId}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;canc</div>
-			  		</div>
-			  		<div class="col-xs-1">{{rowIndex}}</div>
-			  		<div class="col-xs-2"><img src="/img/{{plateType}}.png" class="hands_avatar_img" title="{{plateTypeName plateType}}"></div>		
-			  		<div class="col-xs-5">{{plateTypeName plateType}}</div>	
-			  		
-			  		
-			  	</div>
-			{{/if}}
-			
-		  	{{/let}}
-		  	{{/let}}
-		  	{{/let}}
-		 {{/each}} -->
+			</div>
+			<a href="" class="btn btn-primary js-confirm-inc" style="margin-top: 20px; margin-bottom: 100px;"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;conferma</a>		  
 	</div>
 	
 </template>
