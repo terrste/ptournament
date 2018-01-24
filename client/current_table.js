@@ -6,7 +6,15 @@ Template.current_table.helpers({
   /*users:function(){
     return Meteor.users.find();
   },*/
-
+  isRunning: function(){
+    var tableId = Session.get("tableId"); 
+    var table = Tables.findOne({_id:tableId});
+    if (table && table.state == 'running'){
+      return true; 
+    } else {
+      return false; 
+    }
+  },
   players: function(){
 
     var players = []; 
@@ -83,6 +91,20 @@ Template.current_table.events({
 
 
     
+  },
+
+  "click .js-remove-table": function () {
+    var r = confirm("sei sicuro di rimuovere il tavolo?");
+    if (r == true) {
+       var tableId = Session.get("tableId"); 
+      var table = Tables.findOne({_id:tableId}); 
+      table.active = false; 
+      Meteor.call("updateTable", table, function(){
+        Router.go('/active_tables/' + Session.get("year")); 
+      });
+    } else {
+        return;
+    }
   },
 
   //TODO: eliminare uno dei due metodi seguenti e unificare parametrizzando

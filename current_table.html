@@ -10,7 +10,11 @@
 		<!-- <h1>TABLE {{activeTable}}</h1> 	 -->
 		<h1>Tavolo corrente: {{activeTable}}</h1> 	
 		<a href="/table_hands" class="btn btn-primary">mani giocate&nbsp;<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+		{{#if isRunning}}
 		<button type="button" class="btn btn-primary js-close-table"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;chiudi tavolo</button>	 
+		{{else}}	
+		<a href="" type="button" class="btn btn-primary js-remove-table"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;rimuovi tavolo</a>
+		{{/if}}		
 		<div class="row table-participant-div">
 		  	<!-- {{#each user}}
 			  	<div class="col-xs-6">		  		

@@ -74,7 +74,9 @@ Template.edit_table.events({
        var tableId = Session.get("tableId"); 
       var table = Tables.findOne({_id:tableId}); 
       table.active = false; 
-      Meteor.call("updateTable", table);
+      Meteor.call("updateTable", table, function(){
+        Router.go('/active_tables/' + Session.get("year")); 
+      });
     } else {
         return;
     }
